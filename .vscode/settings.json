@@ -1,0 +1,13 @@
+{
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "prettier.printWidth": 120,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true,
+      "source.organizeImports": false
+    },
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "javascript.preferences.importModuleSpecifier": "relative"
+  }
+  
