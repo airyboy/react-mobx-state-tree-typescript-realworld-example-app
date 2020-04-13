@@ -4,7 +4,7 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
 import Home from "./scenes/Home";
 import Header from "./components/Header";
-import Article from "./scenes/Article";
+import Article from "./scenes/Article/Article";
 import Login from "./scenes/Login";
 import Register from "./scenes/Register";
 import PostEditor from "./scenes/PostEditor";

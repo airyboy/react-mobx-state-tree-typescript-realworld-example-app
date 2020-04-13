@@ -1,9 +1,13 @@
 import * as React from "react";
 import { useStores } from "../common/useStore";
 import { observer } from "mobx-react-lite";
+import { eraseToken } from "../common/auth.storage";
+import { useHistory } from "react-router";
 
 const Settings: React.FC<{}> = () => {
   const authStore = useStores().authStore;
+
+  const history = useHistory();
 
   const [image, setImage] = React.useState(authStore.currentUser?.image ?? "");
   const [username, setUsername] = React.useState(authStore.currentUser?.username ?? "");
@@ -47,8 +51,12 @@ const Settings: React.FC<{}> = () => {
 
     setIsLoading(true);
     await authStore.updateUser(email, bio, image, username, password || undefined);
-    // await store.createArticle(title, description, body, []);
     setIsLoading(false);
+  };
+
+  const handleLogout = () => {
+    authStore.logout();
+    history.replace("/");
   };
 
   return (
@@ -125,9 +133,9 @@ const Settings: React.FC<{}> = () => {
 
             <hr />
 
-            {/* <button className="btn btn-outline-danger" onClick={this.props.onClickLogout}>
+            <button className="btn btn-outline-danger" onClick={() => handleLogout()}>
               Or click here to logout.
-            </button> */}
+            </button>
           </div>
         </div>
       </div>

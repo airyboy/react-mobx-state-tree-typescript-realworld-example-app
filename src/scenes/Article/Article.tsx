@@ -2,14 +2,15 @@ import * as React from "react";
 
 import marked from "marked";
 
-import { useStores } from "../common/useStore";
+import { useStores } from "../../common/useStore";
 import { useRouteMatch } from "react-router";
 
-import Spinner from "../components/Spinner";
+import Spinner from "../../components/Spinner";
 import { observer } from "mobx-react-lite";
-import ArticleMeta from "./Article/ArticleMeta";
-import Comment from "./Article/Comment";
-import AddComment from "./Article/AddComment";
+import ArticleMeta from "./ArticleMeta";
+import Comment from "./Comment";
+import AddComment from "./AddComment";
+import { Link } from "react-router-dom";
 
 const Article: React.FC<{}> = () => {
   const { isLoggedIn } = useStores();
@@ -79,6 +80,16 @@ const Article: React.FC<{}> = () => {
               </div>
             </div>
             <hr />
+            {!isLoggedIn && (
+              <div className="col-xs-12 col-md-8 offset-md-2">
+                <p>
+                  <Link to="/login">Sign in</Link>
+                  &nbsp;or&nbsp;
+                  <Link to="/register">sign up</Link>
+                  &nbsp;to add comments on this article.
+                </p>
+              </div>
+            )}
             <div className="row">
               {isLoading && (
                 <div className="container">

@@ -10,6 +10,7 @@ import Spinner from "../components/Spinner";
 import Pager from "../components/Pager";
 import { useUrlPage } from "../common/useUrlPage";
 import { Link } from "react-router-dom";
+import ArticleList from "../components/ArticleList";
 
 interface IProfileMatchParams {
   username: string;
@@ -114,6 +115,13 @@ const Profile: React.FC<{}> = () => {
                 ? store.currentProfile?.ownArticles
                 : store.currentProfile?.favoriteArticles
               )?.map(article => <ArticlePreview key={article.slug} article={article} />)}
+            {!isLoading && (
+              <ArticleList
+                articles={
+                  profileMode === "own" ? store.currentProfile?.ownArticles : store.currentProfile?.favoriteArticles
+                }
+              />
+            )}
           </div>
         </div>
         <div className="row">

@@ -56,6 +56,7 @@ export const AuthStore = t
 
     const logout = () => {
       eraseToken();
+      self.currentUser = undefined;
     };
 
     return { login, logout, register, getCurrentUser, updateUser };

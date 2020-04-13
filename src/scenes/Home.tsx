@@ -12,6 +12,7 @@ import Spinner from "../components/Spinner";
 import { Link, useLocation } from "react-router-dom";
 import Pager from "../components/Pager";
 import { useQuery } from "../common/useQuery";
+import ArticleList from "../components/ArticleList";
 
 type TabType = "all" | "feed" | "tag";
 
@@ -101,7 +102,7 @@ const Home: React.FC<{}> = () => {
             </ul>
 
             {isLoading && <Spinner />}
-            {!isLoading && store.articles.map(article => <ArticlePreview key={article.slug} article={article} />)}
+            {!isLoading && <ArticleList articles={store.articles} />}
           </div>
 
           <div className="col-md-3">
